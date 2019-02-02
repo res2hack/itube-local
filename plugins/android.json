@@ -1,0 +1,25 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "id.go.jatimprov.disnakertransduk.simpadupmi"
+    },
+    "cordova-plugin-streaming-media": {
+      "PACKAGE_NAME": "id.go.jatimprov.disnakertransduk.simpadupmi"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "m.m"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "m.m"
+    }
+  }
+}

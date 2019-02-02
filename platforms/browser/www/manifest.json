@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "iTube",
+  "short_name": "iTube",
+  "version": "m.m",
+  "description": "Aplikasi local video server seperti Youtube.",
+  "author": "Restu Gandhi",
+  "icons": [],
+  "start_url": "index.html"
+}

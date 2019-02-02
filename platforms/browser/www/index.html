@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  
+  .card {
+    display: inline-block;
+  }
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  
+  .card {
+    flex: 0 0 auto;
+    margin-right: 3px;
+  }
+}
+
+.card {
+  border: 1px solid white;
+  width: 150px;
+  height: 100px;
+  background: black;
+}
+
+.scrolling-wrapper, .scrolling-wrapper-flexbox {
+  height: 160px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+</style>
+	<script type="text/javascript" src="cordova.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+<video id="myVideo" width="320" height="240" autoplay onclick="playerclick()"onended="nextvideoplay()" control>
+	<source src="" type="video/mp4">
+	Your browser does not support the video tag. 
+</video>
+<div id="myList" style="display:none">
+<div id="dataList" class="scrolling-wrapper-flexbox">
+  </div>
+  </div>
+	</body>
+ 	<script>
+	var nextvideo="";
+	screen.orientation.lock('landscape');
+	var physicalScreenWidth = window.screen.width;
+	var physicalScreenHeight = window.screen.height-40;
+	console.log(physicalScreenHeight);
+	console.log(physicalScreenWidth);
+	document.getElementById("myVideo").width = physicalScreenWidth;
+	document.getElementById("myVideo").height = physicalScreenHeight;
+		
+	function playerclick(){
+		var playerheight = document.getElementById("myVideo").height;
+		if(playerheight < physicalScreenHeight){
+			document.getElementById("myVideo").height = physicalScreenHeight;	
+			document.getElementById("myList").style.display = "none";
+
+		}else{
+			document.getElementById("myVideo").height = physicalScreenHeight/2;
+			document.getElementById("myList").style.display = "initial";
+		}
+		<!-- console.log(document.getElementById("myVideo").height); -->
+	}
+	playerclick();
+	function nextvideoplay(){
+		console.log(" next play " + nextvideo);
+		$( "#myVideo" ).attr("src",nextvideo);
+	}
+	$(document).ready(function(){
+		var server = "http://192.168.100.56";
+
+$.getJSON(server + "/site/viewmytubelist", function(result){
+    $.each(result, function(i, field){
+      console.log(field.id + " ");
+			$("#dataList").append('<div class="card"><a class="vlist" href="' + server + "/uploads/videos/" + field.video + '"><img  height="100px" src="' + server + "/uploads/images/" + field.thumbnail + '"/>'+ field.name +'</a></div>');
+    });
+  });
+	$( "#myList" ).on( "click",".vlist", function() {
+		console.log( $( this ).attr("href") );
+		console.log("next" + $(this).parent().next().children("a").attr("href"));
+		nextvideo = $(this).parent().next().children("a").attr("href");
+		$( "#myVideo" ).attr("src",$( this ).attr("href"));
+		playerclick();
+		return false;
+});
+});
+document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        document.addEventListener("backbutton", function (e) {
+            e.preventDefault();
+        }, false );
+}
+	</script>
+</html>

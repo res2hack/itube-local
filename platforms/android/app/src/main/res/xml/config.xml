@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="m.m" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="StreamingMedia">
+        <param name="android-package" value="com.hutchind.cordova.plugins.streamingmedia.StreamingMedia" />
+    </feature>
+    <feature name="CDVOrientation">
+        <param name="android-package" value="cordova.plugins.screenorientation.CDVOrientation" />
+    </feature>
+    <name>iTube</name>
+    <description>
+Aplikasi local video server seperti Youtube.
+    </description>
+    <author email="restu.gandhi@gmail.com" href="http://m.m">
+        Restu Gandhi
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="res/logo36.png" />
+    <icon density="mdpi" src="res/logo48.png" />
+    <icon density="hdpi" src="res/logo72.png" />
+    <icon density="xhdpi" src="res/logo96.png" />
+    <icon density="xxhdpi" src="res/logo144.png" />
+    <icon density="xxxhdpi" src="res/logo192.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="26" />
+    <preference name="orientation" value="landscape" />
+</widget>
